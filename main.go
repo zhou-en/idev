@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/url"
 	"os"
+	"flag"
 )
 
 func EncodeUrl(s string) string {
