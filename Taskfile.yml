@@ -14,9 +14,9 @@ tasks:
     release:
         desc: Release the app locally
         cmds:
-        - cp bin/idev /usr/local/bin
+        - cp bin/idev $GOPATH/bin
 
     clean:
-        desc: Remove all retrieved *.png files
+        desc: Remove all files in dist/
         cmds:
-        - rm *.png
+        - rm -rf dist/*
