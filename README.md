@@ -9,6 +9,12 @@
 <!-- tocstop -->
 Collection of command line tools for development.
 
+## Dependencies
+- Cobra:
+  - https://github.com/spf13/cobra
+- Task:
+  - https://github.com/go-task/task
+
 ## List of tools to create
 
 ### `enUrl`
