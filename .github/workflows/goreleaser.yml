@@ -7,7 +7,7 @@ on:
 
 jobs:
   goreleaser:
-    environment: PROD
+    environment: prod
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
