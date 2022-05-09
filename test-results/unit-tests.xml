@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/zhou-en/idev" timestamp="2022-05-08T23:35:13-06:00">
+		<properties>
+			<property name="go.version" value="go1.18.1 darwin/arm64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="4" failures="4" time="0.200000" name="github.com/zhou-en/idev/cmd" timestamp="2022-05-08T23:35:13-06:00">
+		<properties>
+			<property name="go.version" value="go1.18.1 darwin/arm64"></property>
+		</properties>
+		<testcase classname="github.com/zhou-en/idev/cmd" name="TestGetGopher/req_with_empty_name" time="-0.000000">
+			<failure message="Failed" type="">=== RUN   TestGetGopher/req_with_empty_name&#xA;=== PAUSE TestGetGopher/req_with_empty_name&#xA;=== CONT  TestGetGopher/req_with_empty_name&#xA;name must not be empty n the request&#xA;=== CONT  TestGetGopher/req_with_empty_name&#xA;    server_test.go:50: Got:  &#xA;</failure>
+		</testcase>
+		<testcase classname="github.com/zhou-en/idev/cmd" name="TestGetGopher/nil_request" time="-0.000000">
+			<failure message="Failed" type="">=== RUN   TestGetGopher/nil_request&#xA;=== PAUSE TestGetGopher/nil_request&#xA;=== CONT  TestGetGopher/nil_request&#xA;Request must not be nil&#xA;=== CONT  TestGetGopher/nil_request&#xA;    server_test.go:50: Got:  &#xA;2022/05/08 23:35:15 failed to call KuteGoAPI: Get &#34;http://localhost:8081/gophers?name=yoda-gopher&#34;: dial tcp [::1]:8081: connect: connection refused&#xA;</failure>
+		</testcase>
+		<testcase classname="github.com/zhou-en/idev/cmd" name="TestGetGopher" time="-0.000000">
+			<failure message="Failed" type="">=== RUN   TestGetGopher&#xA;=== RUN   TestGetGopher/req_OK&#xA;=== PAUSE TestGetGopher/req_OK&#xA;=== CONT  TestGetGopher/req_OK&#xA;2022/05/08 23:35:15 Received: yoda-gopher&#xA;=== RUN   TestGetGopher/req_with_empty_name&#xA;=== PAUSE TestGetGopher/req_with_empty_name&#xA;=== CONT  TestGetGopher/req_with_empty_name&#xA;name must not be empty n the request&#xA;=== CONT  TestGetGopher/req_with_empty_name&#xA;    server_test.go:50: Got:  &#xA;=== RUN   TestGetGopher/nil_request&#xA;=== PAUSE TestGetGopher/nil_request&#xA;=== CONT  TestGetGopher/nil_request&#xA;Request must not be nil&#xA;=== CONT  TestGetGopher/nil_request&#xA;    server_test.go:50: Got:  &#xA;2022/05/08 23:35:15 failed to call KuteGoAPI: Get &#34;http://localhost:8081/gophers?name=yoda-gopher&#34;: dial tcp [::1]:8081: connect: connection refused&#xA;</failure>
+		</testcase>
+		<testcase classname="github.com/zhou-en/idev/cmd" name="TestGetGopher/req_OK" time="-0.000000">
+			<failure message="Failed" type="">=== RUN   TestGetGopher/req_OK&#xA;=== PAUSE TestGetGopher/req_OK&#xA;=== CONT  TestGetGopher/req_OK&#xA;2022/05/08 23:35:15 Received: yoda-gopher&#xA;</failure>
+		</testcase>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/zhou-en/idev/pkg/gopher" timestamp="2022-05-08T23:35:13-06:00">
+		<properties>
+			<property name="go.version" value="go1.18.1 darwin/arm64"></property>
+		</properties>
+	</testsuite>
+</testsuites>

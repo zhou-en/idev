@@ -5,36 +5,51 @@ Copyright © 2022 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"fmt"
-
+	"context"
 	"github.com/spf13/cobra"
+	pb "github.com/zhou-en/idev/pkg/gopher"
+	"google.golang.org/grpc"
+	"log"
+	"os"
+	"time"
+)
+
+const (
+	address     = "localhost:9000"
+	defaultName = "dr-who"
 )
 
 // clientCmd represents the client command
 var clientCmd = &cobra.Command{
 	Use:   "client",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Query the gRPC server",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("client called")
+		var conn *grpc.ClientConn
+		conn, err := grpc.Dial(address, grpc.WithInsecure())
+		if err != nil {
+			log.Fatalf("Did not connect: %s", err)
+		}
+		defer conn.Close()
+
+		client := pb.NewGopherClient(conn)
+
+		var name string
+
+		// Contact the server and print out its response
+		// name := defaultName
+		if len(os.Args) > 2 {
+			name = os.Args[2]
+		}
+		ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+		defer cancel()
+		r, err := client.GetGopher(ctx, &pb.GopherRequest{Name: name})
+		if err != nil {
+			log.Fatalf("could not greet: %v", err)
+		}
+		log.Printf("URL: %s", r.GetMessage())
 	},
 }
 
 func init() {
 	rootCmd.AddCommand(clientCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// clientCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// clientCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

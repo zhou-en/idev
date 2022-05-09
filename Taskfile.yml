@@ -16,7 +16,17 @@ tasks:
         cmds:
         - cp bin/idev $GOPATH/bin
 
+    generate:
+        desc: Generate Go code from protobuf
+        cmds:
+        - protoc --go_out=plugins=grpc:. --go_opt=paths=source_relative pkg/gopher/gopher.proto
+
     clean:
         desc: Remove all files in dist/
         cmds:
         - rm -rf dist/*
+
+    test:
+        desc: Execute Unit Tests
+        cmds:
+        - gotestsum --junitfile test-results/unit-tests.xml -- -short -race -cover -coverprofile test-results/cover.out ./...
