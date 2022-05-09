@@ -37,30 +37,9 @@ func parseJsonFile(filePath string) {
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "idev",
-	Short: "Collection of CLI tools for local development purposes.",
-	Long: `idev is a CLI tool written in Go that provides commonly used command during local development, 
-such as parse stringfied JSON to console, read a stringfied text file and parse the output to console, and encode URL strings.
-This purpose of this application is to increase the local development productivity by the simple interface.`,
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
-	Run: func(cmd *cobra.Command, args []string) {
-		enUrlValue, _ := cmd.Flags().GetString(enUrl)
-		parJsonValue, _ := cmd.Flags().GetString(parJson)
-		parJsonfValue, _ := cmd.Flags().GetString(parJsonf)
-
-		switch {
-		case enUrlValue != "":
-			encodeUrl(enUrlValue)
-		case parJsonValue != "":
-			parseJson(parJsonValue)
-		case parJsonfValue != "":
-			parseJsonFile(parJsonfValue)
-		default:
-			fmt.Println("No Value was Supplied.")
-		}
-
-	},
+	Use:   "go-gopher-grpc",
+	Short: "gRPC app in Go",
+	Long:  `gRPC application written in Go.`,
 }
 
 var versionCmd = &cobra.Command{
