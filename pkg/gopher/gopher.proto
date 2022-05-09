@@ -1,0 +1,21 @@
+syntax ="proto3";
+package gopher;
+
+option go_package = "github.com/zhou-en/idev";
+
+// The gopher service definition.
+service Gopher {
+    // Get Gopher URL
+    rpc GetGopher (GopherRequest) returns (GopherReply) {}
+}
+
+// The request message containing the user's name.
+message GopherRequest {
+    string name = 1;
+}
+
+// The response message containing the greetings
+message GopherReply {
+    string message = 1;
+}
+
