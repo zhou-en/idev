@@ -23,6 +23,7 @@ Collection of command line tools for development.
 Encode the give http url.
 
 -
+
 run: `idev --enUrl https://www.glassdoor.ca/Overview/Working-at-Vancouver-Public-Library-EI_IE468025.11,35.htm`
 -
 output: `https:%2F%2Fwww.glassdoor.ca%2FOverview%2FWorking-at-Vancouver-Public-Library-EI_IE468025.11%2C35.htm`
@@ -59,5 +60,3 @@ Read the give text file and parse stringfied content to JSON.
       "a": "aa"
     }
     ```
-
-q
