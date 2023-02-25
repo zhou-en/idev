@@ -1,7 +1,4 @@
-/*
-Copyright © 2022 NAME HERE <EMAIL ADDRESS>
-
-*/
+// Package cmd /*
 package cmd
 
 import (
@@ -12,24 +9,19 @@ import (
 )
 
 // parJsonCmd represents the parJson command
-var parJsonCmd = &cobra.Command{
+var parJSONCmd = &cobra.Command{
 	Use:   "parJson",
 	Short: "Parse stringfied JSON to pretty format and output to console.",
-	//	Long: `A longer description that spans multiple lines and likely contains examples
-	//and usage of using your command. For example:
-	//
-	//Cobra is a CLI library for Go that empowers applications.
-	//This application is a tool to generate the needed files
-	//to quickly create a Cobra application.`,
+	Long:  `Example: idev --parJson '{\"a\":\"aa\", \"b\": {\"c\":\"cc\"}, \"d\": [1,2,3]}'`,
 	Run: func(cmd *cobra.Command, args []string) {
 		jsonStr := ""
 		if len(args) >= 1 && args[0] != "" {
 			jsonStr = args[0]
 		}
 		cmdStr := fmt.Sprintf("echo %s | jq", jsonStr)
-		//fmt.Println(cmdStr)
+		fmt.Println(cmdStr)
 		c := exec.Command("/bin/bash", "-c", cmdStr)
-		//c := exec.Command("/bin/sh", "-c", "echo $GOPATH")
+		// c := exec.Command("/bin/sh", "-c", "echo $GOPATH")
 		stdout, _ := c.Output()
 
 		fmt.Println(string(stdout))
@@ -37,13 +29,13 @@ var parJsonCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(parJsonCmd)
+	rootCmd.AddCommand(parJSONCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	parJsonCmd.PersistentFlags().String("file", "", "Parse a stringfied JSON from a text file.")
+	parJSONCmd.PersistentFlags().String("file", "", "Parse a string field JSON from a text file.")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:

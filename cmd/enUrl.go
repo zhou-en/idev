@@ -14,13 +14,8 @@ import (
 // enUrlCmd represents the enUrl command
 var enUrlCmd = &cobra.Command{
 	Use:   "enUrl",
-	Short: "Ecode a URL string",
-	//	Long: `A longer description that spans multiple lines and likely contains examples
-	//and usage of using your command. For example:
-	//
-	//Cobra is a CLI library for Go that empowers applications.
-	//This application is a tool to generate the needed files
-	//to quickly create a Cobra application.`,
+	Short: "Encode a URL string",
+	Long:  `Example usage: idev enUrl "https://github.com/zhou-en"`,
 	Run: func(cmd *cobra.Command, args []string) {
 		urlStr := ""
 		if len(args) >= 1 && args[0] != "" {
