@@ -23,4 +23,4 @@ dep:
 	go mod tidy
 
 lint:
-	golangci-lint run --disable=typecheck,gosimple,staticcheck,structcheck,unused main.go
+	golangci-lint run --disable=typecheck,gosimple,staticcheck,structcheck,unused ./... cmd/
