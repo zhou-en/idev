@@ -12,9 +12,11 @@ import (
 )
 
 const (
-	URL    = "url"
-	output = "output"
-	schema = "schema"
+	URL       = "url"
+	output    = "output"
+	schema    = "schema"
+	selector  = "selector"
+	attribute = "attribute"
 )
 
 // scraperCmd represents the scrape command
