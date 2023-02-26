@@ -79,7 +79,11 @@ Reference: https://github.com/spf13/cobra-cli/blob/main/README.md
     - Let's say we want to create a command
       called `server`: `cobra-cli add serve`
         - The command will be: `my-app serve`
-    - If we want to add a flag
+    - Add a parent command:
+        - `cobra-cli add <parent-command>`
+    - Add a child command
+        - `cobra-cli add <child-command> -p <parent-command>Cmd`
+        - `Cmd` suffix must be added to the parent command string
 
 - Use config file for `cobra-cli`
     - There is an existing config file in this repo: `.cobra.yaml`
