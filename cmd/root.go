@@ -10,32 +10,12 @@ import (
 	"fmt"
 	"github.com/google/go-github/v50/github"
 	"github.com/spf13/cobra"
-	"net/url"
 	"os"
-	"os/exec"
 )
 
-const enUrl = "enUrl"
-const parJson = "parJson"
-const parJsonf = "parJsonf"
-
-func encodeUrl(urlStr string) {
-	fmt.Println(url.PathEscape(urlStr))
-}
-
-func parseJson(jsonStr string) {
-	cmdStr := fmt.Sprintf("echo %s | jq", jsonStr)
-	c := exec.Command("/bin/bash", "-c", cmdStr)
-	stdout, _ := c.Output()
-	fmt.Println(string(stdout))
-}
-
-func parseJsonFile(filePath string) {
-	cmdStr := fmt.Sprintf("jq 'fromjson | .' %s", filePath)
-	c := exec.Command("/bin/bash", "-c", cmdStr)
-	stdout, _ := c.Output()
-	fmt.Println(string(stdout))
-}
+const enURL = "enUrl"
+const parJSON = "parJson"
+const parJsonF = "parJsonF"
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -46,23 +26,7 @@ such as parse stringfied JSON to console, read a stringfied text file and parse 
 This purpose of this application is to increase the local development productivity by the simple interface.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
-	Run: func(cmd *cobra.Command, args []string) {
-		enUrlValue, _ := cmd.Flags().GetString(enUrl)
-		parJsonValue, _ := cmd.Flags().GetString(parJson)
-		parJsonfValue, _ := cmd.Flags().GetString(parJsonf)
-
-		switch {
-		case enUrlValue != "":
-			encodeUrl(enUrlValue)
-		case parJsonValue != "":
-			parseJson(parJsonValue)
-		case parJsonfValue != "":
-			parseJsonFile(parJsonfValue)
-		default:
-			fmt.Println("No Value was Supplied.")
-		}
-
-	},
+	Run: func(cmd *cobra.Command, args []string) {},
 }
 
 var versionCmd = &cobra.Command{
@@ -98,24 +62,8 @@ func Execute() {
 }
 
 func init() {
-	//var Verbose bool
-
-	//var Source string
-	// Here you will define your flags and configuration settings.
-	// Cobra supports persistent flags, which, if defined here,
-	// will be global for your application.
-
-	//rootCmd.PersistentFlags().BoolVarP(&Verbose, "verbose", "v", false, "verbose output")
-	// Cobra also supports local flags, which will only run
-	// when this action is called directly.
-	//rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	rootCmd.Flags().StringP(enUrl, "", "", "Encode a URL")
-	rootCmd.Flags().StringP(parJson, "", "", "Parse stringfied JSON")
-	rootCmd.Flags().StringP(parJsonf, "", "", "Parse stringfied JSON from a given file")
-
-	//viper.BindPFlag("test", rootCmd.PersistentFlags().Lookup("test"))
-	//rootCmd.ParseFlags()
-	//testStr := viper.GetString("test")
-	//fmt.Println(testStr)
+	rootCmd.Flags().StringP(enURL, "", "", "Encode a URL")
+	rootCmd.Flags().StringP(parJSON, "", "", "Parse stringfied JSON")
+	rootCmd.Flags().StringP(parJsonF, "", "", "Parse stringfied JSON from a given file")
 	rootCmd.AddCommand(versionCmd)
 }

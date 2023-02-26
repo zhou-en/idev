@@ -17,11 +17,7 @@ var enURLCmd = &cobra.Command{
 	Short: "Encode a URL string",
 	Long:  `Example usage: idev enUrl "https://github.com/zhou-en"`,
 	Run: func(cmd *cobra.Command, args []string) {
-		urlStr := ""
-		if len(args) >= 1 && args[0] != "" {
-			urlStr = args[0]
-		}
-
+		urlStr, _ := cmd.Flags().GetString(enURL)
 		fmt.Println(url.PathEscape(urlStr))
 	},
 }
