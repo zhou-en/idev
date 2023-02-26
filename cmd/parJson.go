@@ -19,9 +19,8 @@ var parJSONCmd = &cobra.Command{
 			jsonStr = args[0]
 		}
 		cmdStr := fmt.Sprintf("echo %s | jq", jsonStr)
-		fmt.Println(cmdStr)
+		//fmt.Println(cmdStr)
 		c := exec.Command("/bin/bash", "-c", cmdStr)
-		// c := exec.Command("/bin/sh", "-c", "echo $GOPATH")
 		stdout, _ := c.Output()
 
 		fmt.Println(string(stdout))

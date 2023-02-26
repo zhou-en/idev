@@ -6,7 +6,9 @@ Copyright © 2022 En Zhou <zhoeun.nathan@gmail.com>
 package cmd
 
 import (
+	"context"
 	"fmt"
+	"github.com/google/go-github/v50/github"
 	"github.com/spf13/cobra"
 	"net/url"
 	"os"
@@ -68,8 +70,22 @@ var versionCmd = &cobra.Command{
 	Short: "Print the version number of idev",
 	Long:  `All software has versions. This is idev's`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Hugo Static Site Generator v0.9 -- HEAD")
+		fmt.Println(getVersion())
 	},
+}
+
+func getVersion() string {
+	client := github.NewClient(nil)
+	tags, _, err := client.Repositories.ListTags(context.Background(), "zhou-en", "idev", nil)
+	if err != nil {
+		fmt.Println(err)
+		return ""
+	}
+
+	if len(tags) > 0 {
+		return tags[0].GetName()
+	}
+	return "No tags yet"
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

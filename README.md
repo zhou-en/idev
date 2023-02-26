@@ -15,6 +15,8 @@ Collection of command line tools for development.
     - https://github.com/spf13/cobra
 - Task:
     - https://github.com/go-task/task
+- jq:
+    - https://stedolan.github.io/jq/
 
 ## List of tools to create
 
@@ -94,3 +96,14 @@ Reference: https://github.com/spf13/cobra-cli/blob/main/README.md
         - Create an alias in your `~/.profile`
             - `alias cobra=cobra-cli --config ./.cobra.yaml`
         - it'll always use the config at where you run the `cobra` command
+
+## Release
+
+- Tag release
+    - `git tag -a [tag_name] HEAD -m "Tag message"`
+    - use version for tag name, i.e. `v1.0.7`
+- Push tag
+    - `git push origin [tag_name]`
+        - in the example: `git push origin v1.0.7`
+    - this will trigger the GitHub action workflow to build binaries for all
+      supported platforms

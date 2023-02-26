@@ -9,7 +9,7 @@ run:
 	go build -o bin/idev main.go && ./bin/idev $(ARGS)
 
 release:
-	cp bin/idev /usr/local/bin
+	cp bin/idev $(GOPATH)/bin
 
 clean:
 	go clean
