@@ -60,3 +60,23 @@ Read the give text file and parse stringfied content to JSON.
       "a": "aa"
     }
     ```
+
+## Development
+
+Reference: https://github.com/spf13/cobra-cli/blob/main/README.md
+
+- Install `cobra-cli`
+
+    ```shell
+    go install github.com/spf13/cobra-cli@latest
+    ```
+
+- Initialize a project
+    - cd `my-app/`
+    - Run `cobra-cli init` in your root of your project directory
+
+- Add a command to the project
+    - Let's say we want to create a command
+      called `server`: `cobra-cli add serve`
+        - The command will be: `my-app serve`
+    - If we want to add a flag
