@@ -80,3 +80,13 @@ Reference: https://github.com/spf13/cobra-cli/blob/main/README.md
       called `server`: `cobra-cli add serve`
         - The command will be: `my-app serve`
     - If we want to add a flag
+
+- Use config file for `cobra-cli`
+    - There is an existing config file in this repo: `.cobra.yaml`
+    - Option 1:
+        - Run `cobra-cli --config .cobra.yaml add <command>` in the root
+          directory
+    - Option 2:
+        - Create an alias in your `~/.profile`
+            - `alias cobra=cobra-cli --config ./.cobra.yaml`
+        - it'll always use the config at where you run the `cobra` command
