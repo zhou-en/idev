@@ -45,13 +45,13 @@ func init() {
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	scraperCmd.PersistentFlags().StringP(URL, "u", "", "Target website url that is going to be scraped")
-	_ = scraperCmd.MarkPersistentFlagRequired(URL)
+	scraperCmd.PersistentFlags().StringP(filename, "f", "", "Target local file that is going to be scraped")
+	_ = scraperCmd.MarkPersistentFlagRequired(filename)
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	scraperCmd.Flags().StringP(schema, "s", "", "Schema for scraped data structure in JSON format")
-	_ = scraperCmd.MarkFlagRequired(schema)
+	// _ = scraperCmd.MarkFlagRequired(schema)
 	scraperCmd.Flags().StringP(output, "o", "", "Output data file name with extension")
-	_ = scraperCmd.MarkFlagRequired(output)
+	// _ = scraperCmd.MarkFlagRequired(output)
 }

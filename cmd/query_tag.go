@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/spf13/cobra"
@@ -26,14 +27,11 @@ to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		s, _ := cmd.Flags().GetString(selector)
 		//schemaPath, _ := cmd.Flags().GetString(schema)
-		u, _ := cmd.Flags().GetString(URL)
-		resp, err := http.Get(u) //nolint:gosec
+		f, err := cmd.Flags().GetString(filename)
+		file, err := os.Open(f)
+
 		if err != nil {
 			log.Fatal(err)
-		}
-		defer resp.Body.Close()
-		if resp.StatusCode != 200 {
-			log.Panicf("status code error: %d %s", resp.StatusCode, resp.Status)
 		}
 
 		// scrape a site based on the given rule
@@ -46,7 +44,7 @@ to quickly create a Cobra application.`,
 		// scrape a element
 		if s != "" {
 			a, _ := cmd.Flags().GetString(attribute)
-			doc, err := goquery.NewDocumentFromReader(resp.Body)
+			doc, err := goquery.NewDocumentFromReader(file)
 			if err != nil {
 				log.Fatal(err)
 			}
