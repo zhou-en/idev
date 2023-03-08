@@ -48,7 +48,7 @@ to quickly create a Cobra application.`,
 			if err != nil {
 				log.Fatal(err)
 			}
-			result := doc.Find(s)
+			result := doc.Find(s).First()
 			if a != "" {
 				val, exists := result.Attr(a)
 				if exists {
